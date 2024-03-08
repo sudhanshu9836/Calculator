@@ -1,0 +1,69 @@
+html, body{
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+main{
+    height: 800px;
+    width: 550px;
+    background-color: #3394d0;
+    border-radius: 10px;
+    margin-top: 200px;
+}
+
+.screen{
+    height: 100px;
+    width: 80%;
+    background-color: #94a295;
+    margin: 50px auto;
+    border-radius: 10px;
+}
+#screen-input{
+    height: 100%;
+    width: 100%;
+    background-color: #94a295;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: right;
+}
+
+.keys{
+    height: 70px;
+    width: 100px;
+    background-color: black;
+    color: white;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    cursor: pointer;
+    font-size: 25px;
+    font-weight: 900;
+}
+#equal{
+    transform: scaleX(2);
+    margin: 20px 60px;
+}
+.utility-buttons{
+    display: flex;
+    justify-content: space-around;
+    margin: 0px 40px;
+
+}
+
+.buttons{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0px 40px;
+}
