@@ -4,6 +4,7 @@ let keys = document.getElementsByClassName("keys")
 let currentStatus = "off";
 let otherStatus = "on"
 
+
 function swap(){
     let temp;
     temp = currentStatus;
@@ -56,7 +57,7 @@ document.getElementById("clear-screen").addEventListener("click",()=>{
     reset();
 })
 
-
+//Logic script
 let add = document.getElementById("+");
 let sub = document.getElementById("-");
 let mul = document.getElementById("*");
@@ -90,6 +91,11 @@ div.addEventListener("click",()=>{
 
 let equalTo = document.getElementById("equal");
 let res = 0;
+function back(){
+    res = 0;
+    num = [];
+    reset();
+}
 function result(){
     let expression = ' ';
     for( let i = 0; i< num.length; i++){
@@ -104,15 +110,14 @@ function result(){
     res = 0;
     res = eval(expression);
     screenInput.value = res;
+    for(let i = 0; i<keys.length; i++){
+        keys[i].addEventListener("click", ()=>{
+            back();
+        } )
 }
-
-// keys.addEventListener("click",()=>{
-//     if (res!=0)
-//     reset();
-// })
+}
 
 equalTo.addEventListener("click", ()=>{
     num.push(screenInput.value);
     result();
-
 })
