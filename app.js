@@ -1,6 +1,5 @@
 let onOff = document.getElementById("on-off");
 let screenInput = document.getElementById("screen-input");
-let keys = document.getElementsByClassName("keys")
 let currentStatus = "off";
 let otherStatus = "on"
 
@@ -58,11 +57,19 @@ document.getElementById("clear-screen").addEventListener("click",()=>{
 })
 
 //Logic script
+let num = [];
+
+function operate(operator) {
+    if (currentStatus == "on") {
+        num.push(screenInput.value);
+        num.push(operator);
+        updateScreen();
+    }
+}
 let add = document.getElementById("+");
 let sub = document.getElementById("-");
 let mul = document.getElementById("*");
 let div = document.getElementById("/");
-let num = [];
 
 add.addEventListener("click",()=>{
     num.push(screenInput.value);
@@ -91,11 +98,6 @@ div.addEventListener("click",()=>{
 
 let equalTo = document.getElementById("equal");
 let res = 0;
-function back(){
-    res = 0;
-    num = [];
-    reset();
-}
 function result(){
     let expression = ' ';
     for( let i = 0; i< num.length; i++){
@@ -107,17 +109,16 @@ function result(){
         }
     }
     console.log(expression);
+    num = [];
     res = 0;
     res = eval(expression);
     screenInput.value = res;
-    for(let i = 0; i<keys.length; i++){
-        keys[i].addEventListener("click", ()=>{
-            back();
-        } )
-}
 }
 
 equalTo.addEventListener("click", ()=>{
     num.push(screenInput.value);
     result();
-})
+    document.getElementById("clear-screen").addEventListener("click",()=>{
+        reset();
+    })
+    })
