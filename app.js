@@ -2,7 +2,9 @@ let onOff = document.getElementById("on-off");
 let screenInput = document.getElementById("screen-input");
 let currentStatus = "off";
 let otherStatus = "on"
-
+let keys = document.getElementsByClassName("keys");
+let ui = document.getElementById("ui");
+let status = document.getElementById("status");
 
 function swap(){
     let temp;
@@ -16,10 +18,14 @@ onOff.addEventListener("click", ()=>{
         screenInput.style.display = "none";
         swap();
         reset();
+        num = [];
+        ui.innerText = "";
+        status.style.backgroundColor = "red";
     }
     else{
         screenInput.style.display = "block";
         swap();
+        status.style.backgroundColor = "green";
     }
 })
 
@@ -66,6 +72,14 @@ function operate(operator) {
         updateScreen();
     }
 }
+// function print(){
+//     let h4 = document.createElement('h4');
+//     h4 = num;
+//     h4.style.textAlign = "right";
+//     screenInput.push(h4);
+// }
+
+
 let add = document.getElementById("+");
 let sub = document.getElementById("-");
 let mul = document.getElementById("*");
@@ -76,24 +90,28 @@ add.addEventListener("click",()=>{
     num.push("+");
     console.log(num);
     reset();
+    ui.innerText = num.join('');
 })
 sub.addEventListener("click",()=>{
     num.push(screenInput.value);
     num.push("-");
     console.log(num);
     reset();
+    ui.innerText = num.join('');
 })
 mul.addEventListener("click",()=>{
     num.push(screenInput.value);
     num.push("*");
     console.log(num);
     reset();
+    ui.innerText = num.join('');
 })
 div.addEventListener("click",()=>{
     num.push(screenInput.value);
     num.push("/");
     console.log(num);
     reset();
+    ui.innerText = num.join('');
 })
 
 let equalTo = document.getElementById("equal");
@@ -117,8 +135,6 @@ function result(){
 
 equalTo.addEventListener("click", ()=>{
     num.push(screenInput.value);
-    result();
-    document.getElementById("clear-screen").addEventListener("click",()=>{
-        reset();
-    })
+    ui.innerText = num.join('');
+    result();  
     })
