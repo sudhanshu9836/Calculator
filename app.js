@@ -60,6 +60,7 @@ function reset(){
 
 document.getElementById("clear-screen").addEventListener("click",()=>{
     reset();
+    ui.innerText = "";
 })
 
 //Logic script
